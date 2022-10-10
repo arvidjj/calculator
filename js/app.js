@@ -39,6 +39,7 @@ let operator = '';
 let currentFunction = []; //STORES THE NUMBERS INPUTTED
 let operatorFunction = []; // STORES THE OPERATORS INPUTTED
 let partOfFunction = 0;  // INDICATES WHICH PART OF THE FUNCTION IS CURRENTLY BEING INPUTTED
+let partResolved = 0;
 
 let restartDisplayBool = false; //IF TRUE, RESTARTS DISPLAY WHEN CLICKING A BUTTON
 
@@ -67,6 +68,9 @@ function saveCurrentNumber(e) {
 operatorButtons.forEach(button => button.addEventListener('click', displayInput));
 operatorButtons.forEach(button => button.addEventListener('click', saveOperator));
 function saveOperator(e) {
+    if (operatorFunction.length > 0) {
+        operateFunction();
+    }
     operator = this.textContent;
     currentFunction[partOfFunction] = currentNumber;
     operatorFunction[partOfFunction] = operator;
@@ -80,15 +84,16 @@ function operateFunction() {
     currentFunction[partOfFunction] = currentNumber;
     let result = currentFunction[0]; //STORES THE RESULT AS THE FIRST NUMBER OF FUNCTION
     for (let i = 0; i < currentFunction.length-1; i++) {  //MAIN CALCULATION
+        ++partResolved;
         console.log(`${result} ${operatorFunction[i]} ${currentFunction[i+1]}`)
         result = operate(+result, +currentFunction[i+1], operatorFunction[i]); //CONTINUES OPERATION THE RESULT WITH NEXT NUMBER OF FUNCTION AND
     }                                                                          //OPERATOR
+    result = Math.round((result + Number.EPSILON) * 100) / 100
     showResult(result);
 }
 
 function showResult(result) { 
     calcResult.textContent = result;
-    resetInputs();
 }
 
 function resetInputs() {
@@ -97,5 +102,11 @@ function resetInputs() {
     currentFunction = [];
     operatorFunction = [];
     partOfFunction = 0;
+    partResolved = 0;
     restartDisplayBool = true;
+}
+
+function clearCalc(){
+    resetInputs();
+    calcInput.textContent = ``;
 }
