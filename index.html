@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <script src="js/app.js" defer></script>
+</head>
+
+<body>
+    <div class="centerScreen d-flex-center" style="flex-direction:column;">
+        <h1>Calculator</h1>
+        <div class="main-calc d-flex-center smallShadow">
+            <div class="result-box">
+                <p id="calcInput">1 + 1</p>
+                <h3 id="calcResult">2</h3>
+            </div>
+            <button class="btn btnClear" style="align-self:flex-end;">Clear</button>
+            <div class="keys">
+                <div class="button-grid">
+                    <button class="btn" id="button9">9</button>
+                    <button class="btn" id="button8">8</button>
+                    <button class="btn" id="button7">7</button>
+                    <button class="btn" id="button6">6</button>
+                    <button class="btn" id="button5">5</button>
+                    <button class="btn" id="button4">4</button>
+                    <button class="btn" id="button3">3</button>
+                    <button class="btn" id="button2">2</button>
+                    <button class="btn" id="button1">1</button>
+                    <button class="btn" id="button0">0</button>
+                </div>
+                <div class="button-grid2">
+                    <button class="btn" id="button+">+</button>
+                    <button class="btn" id="button-">-</button>
+                    <button class="btn" id="button*">*</button>
+                    <button class="btn" id="button/">/</button>
+                    <button class="btn" id="button=">=</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
