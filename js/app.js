@@ -49,37 +49,45 @@ function isOperator(a) {
     return (a === '+' || a === '-' || a ==='*' || a ==='/');
 }
 
-numberButtons.forEach(button => button.addEventListener('click', displayInput)); //DISPLAYS INPUT IN CALC
-numberButtons.forEach(button => button.addEventListener('click', saveCurrentNumber)); //SAVES NUMBER IN CURRENTFUNCTION
-function displayInput(e) { 
+numberButtons.forEach(button => button.addEventListener('click', function(){
+    displayInput(button.textContent);
+})); //DISPLAYS INPUT IN CALC
+numberButtons.forEach(button => button.addEventListener('click', function(){
+    saveCurrentNumber(button.textContent);
+})); //SAVES NUMBER IN CURRENTFUNCTION
+function displayInput(a) { 
     if (restartDisplayBool) { // RESTARTS DISPLAY INPUT IF BOOL IS TRUE
         calcInput.textContent = ``;
         restartDisplayBool = false;
     }
-    let input = this.textContent;
+    let input = a;
     if (input.isOperator) { //DOESNT WORKS
         calcInput.textContent += ` ${input} `;
     } else {
         calcInput.textContent += input;
     }
 
-    if (this.textContent === '.'){
+    if (a === '.'){
         buttonDot.setAttribute('disabled', '');
     }
 }
-function saveCurrentNumber(e) { 
-    currentNumber += this.textContent; 
+function saveCurrentNumber(a) { 
+    currentNumber += a; 
     console.log(currentNumber);
     currentFunction[partOfFunction] = currentNumber;
  }
 
-operatorButtons.forEach(button => button.addEventListener('click', displayInput));
-operatorButtons.forEach(button => button.addEventListener('click', saveOperator));
-function saveOperator(e) {
+operatorButtons.forEach(button => button.addEventListener('click', function(){
+    displayInput(button.textContent);
+}));
+operatorButtons.forEach(button => button.addEventListener('click', function(){
+    saveOperator(button.textContent);
+}));
+function saveOperator(a) {
     if (operatorFunction.length > 0) {
         operateFunction();
     }
-    operator = this.textContent;
+    operator = a;
     //currentFunction[partOfFunction] = currentNumber;
     operatorFunction[partOfFunction] = operator;
     currentNumber = '';
@@ -117,6 +125,8 @@ function resetInputs() {
     partOfFunction = 0;
     partResolved = 0;
     restartDisplayBool = true;
+    isDecimal = false;
+    buttonDot.removeAttribute('disabled');
 }
 
 function clearCalc(){
@@ -127,16 +137,26 @@ function clearCalc(){
 const buttonDelete = document.querySelector('#buttonDelete');
 buttonDelete.addEventListener('click', delInput);
 function delInput() {
-    console.log(currentNumber);
     currentNumber = currentNumber.slice(0, -1);
     console.log(currentNumber);
     calcInput.textContent = currentNumber;
 }
 
 window.addEventListener('keydown', pressKey);
-function pressKey(e) {
-    console.log(e.key += 1);
-    if (!(e.key ==='1' || e.key ==='2' || e.key ==='3' || e.key ==='4' || e.key ==='5' ||e.key ==='6'||e.key ==='7'||e.key ==='8'||e.key ==='9'||e.key ==='0')) return;
-    displayInput();
-    saveCurrentNumber();
+function pressKey(e) {   //KEYPRESSES ON WINDOW
+    if (e.key ==='1' || e.key ==='2' || e.key ==='3' || e.key ==='4' || e.key ==='5' 
+    ||e.key ==='6'||e.key ==='7'||e.key ==='8'||e.key ==='9'||e.key ==='0') {
+        displayInput(e.key);
+        saveCurrentNumber(e.key);
+    } else if (e.key === '.' && buttonDot.getAttribute('disabled') === null) {
+        displayInput(e.key);
+        saveCurrentNumber(e.key);
+    } else if (e.key === '+'|| e.key === '-' || e.key === '*' || e.key === '/') {
+        displayInput(e.key);
+        saveOperator(e.key);
+    } else if (e.keyCode === 13){
+        operateFunction();
+    } else if (e.keyCode === 8){
+        delInput();
+    }
   }
