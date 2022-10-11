@@ -61,7 +61,7 @@ function displayInput(a) {
         restartDisplayBool = false;
     }
     let input = a;
-    if (input.isOperator) { //DOESNT WORKS
+    if (input.isOperator) { //DOESN'T WORKS
         calcInput.textContent += ` ${input} `;
     } else {
         calcInput.textContent += input;

@@ -1,13 +1,13 @@
 body {
     font-family: 'Roboto', arial;
     margin: 0; padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .centerScreen {
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .smallShadow {
@@ -27,6 +27,7 @@ body {
     display:flex;
     flex-direction: column;
     border-radius:8px;
+    margin-bottom:20px;
 }
 
 .btn {
@@ -74,7 +75,7 @@ body {
 
 .result-box {
     background-color: white;
-    border: 1px solid black;
+    border: 3px solid lightgray;
     width: 330px;  
     height: 80px;
     margin-bottom: 10px;
@@ -96,4 +97,54 @@ body {
     display:flex;
     align-items: flex-end;
     justify-content: flex-end;
+}
+
+footer {
+    border-top: 1px solid white; 
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-top: 1px solid darkgray;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.contact {
+    display:flex;
+    margin:50px;
+}
+
+.contactContainer {
+    padding: 50px;
+    background-color: #24252f;
+    border: 5px solid rgb(24, 25, 36);
+    width:100%
+}
+
+.contactItem {
+    display:flex;
+}
+
+.contactItem a {
+    display:flex;
+    align-items: center;
+    padding:2px;
+    padding-right:30px;
+    text-decoration: none;
+    color:black;
+}
+
+.contactItem a:hover .contactH {
+    text-shadow: 0 0 5px rgb(133, 125, 204), 0 0 7px #ff0000;
+}
+
+.contactItem a img {
+    width:auto;
+    height:25px;
+    margin-right:8px;
 }
