@@ -26,24 +26,32 @@ body {
     padding: 1px;
     display:flex;
     flex-direction: column;
+    border-radius:8px;
 }
 
 .btn {
     padding: 20px 24px;
     cursor: pointer;
     border: 2px solid black;
-    border-radius: 8px;
+    font-weight: bold;
+    font-size: large;
+    /*border-radius: 8px;*/
 }
 
 .btnNumbers {
     background-color: white;
 }
 
-.btnOperator, .btnEquals {
+.btnOperator {
     background-color: whitesmoke;
 }
 
-.btnClear {
+#buttonEquals {
+    background-color: #ffbf69;
+    font-size: x-large;
+}
+
+.btnClear, .btnDel {
     padding: 10px 14px;
 }
 
@@ -61,12 +69,13 @@ body {
 .keys {
     display: flex;
     padding: 15px;
+    padding-top:0;
 }
 
 .result-box {
     background-color: white;
     border: 1px solid black;
-    width: 95%;
+    width: 330px;  
     height: 80px;
     margin-bottom: 10px;
     padding: 5px;
@@ -74,8 +83,17 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
+    overflow: hidden;
 }
 
 .result-box h1, h3 {
     margin: 0;
+    max-width: 95%;
+}
+
+.optionButtons {
+    width: 91%;
+    display:flex;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
