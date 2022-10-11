@@ -36,11 +36,20 @@ body {
     border: 2px solid black;
     font-weight: bold;
     font-size: x-large;
+    transition: all .05s ease;
     /*border-radius: 8px;*/
+}
+
+.active {
+    transform: scale(1.1);
 }
 
 .btnNumbers {
     background-color: white;
+}
+
+.btnNumbers:hover, .btnOperator:hover, .btnClear:hover, .btnDel:hover {
+    background-color: lightgray;
 }
 
 .btnOperator {
@@ -53,8 +62,13 @@ body {
     font-size: x-large;
 }
 
+#buttonEquals:hover {
+    background-color: #ffa126;
+}
+
 .btnClear, .btnDel {
     padding: 10px 14px;
+    margin-left:5px;
 }
 
 .button-grid {
@@ -85,19 +99,18 @@ body {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    overflow: hidden;
 }
 
-.result-box h1, h3 {
+.result-box h1, h2 {
     margin: 0;
     max-width: 95%;
 }
 
 .optionButtons {
-    width: 91%;
+    margin-left:auto;
     display:flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    padding-right: 15px;
+    margin-bottom:5px;
 }
 
 footer {

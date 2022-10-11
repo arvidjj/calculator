@@ -54,8 +54,10 @@ numberButtons.forEach(button => button.addEventListener('click', function(){
 })); //DISPLAYS INPUT IN CALC
 numberButtons.forEach(button => button.addEventListener('click', function(){
     saveCurrentNumber(button.textContent);
-})); //SAVES NUMBER IN CURRENTFUNCTION
+})); //SAVES NUMBER IN CURRENT FUNCTION
 function displayInput(a) { 
+    //let selected = document.querySelector(`#button${a}`);
+    //selected.classList.add('active');
     if (restartDisplayBool) { // RESTARTS DISPLAY INPUT IF BOOL IS TRUE
         calcInput.textContent = ``;
         restartDisplayBool = false;
@@ -76,6 +78,11 @@ function saveCurrentNumber(a) {
     console.log(currentNumber);
     currentFunction[partOfFunction] = currentNumber;
  }
+ numberButtons.forEach(button => button.addEventListener('transitionend', removeTransition));
+ function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('active');
+  }
 
 operatorButtons.forEach(button => button.addEventListener('click', function(){
     displayInput(button.textContent);
@@ -105,7 +112,6 @@ function operateFunction() {
     currentFunction[partOfFunction] = currentNumber;
     let result = currentFunction[0]; //STORES THE RESULT AS THE FIRST NUMBER OF FUNCTION
     for (let i = 0; i < currentFunction.length-1; i++) {  //MAIN CALCULATION
-        ++partResolved;
         console.log(`${result} ${operatorFunction[i]} ${currentFunction[i+1]}`)
         result = operate(+result, +currentFunction[i+1], operatorFunction[i]); //CONTINUES OPERATION THE RESULT WITH NEXT NUMBER OF FUNCTION AND
     }                                                                          //OPERATOR
