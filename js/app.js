@@ -31,7 +31,7 @@ function operate(a, b, operator) {
 
 const calcInput = document.querySelector('#calcInput');
 const calcResult = document.querySelector('#calcResult');
-const numberButtons = document.querySelectorAll('.button-grid .btn');
+const numberButtons = document.querySelectorAll('.btnNumbers');
 const operatorButtons = document.querySelectorAll('.btnOperator');
 const buttonDot = document.querySelector('#buttonDot');
 
